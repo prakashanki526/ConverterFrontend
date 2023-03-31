@@ -12,6 +12,7 @@ const Home = () => {
 
     function handleFileLoad(data){
         setFile(data);
+        // console.log(data);
     }
 
 
@@ -32,8 +33,7 @@ const Home = () => {
             if(typeof(jsonData[data]) === 'object' && jsonData[data] !== null){
                 for(let innerData in jsonData[data])
                 {
-                    // pdf2.text(data, 10, 20 + (row*10));
-                    if(jsonData[data][innerData] !== undefined){
+                    if(jsonData[data][innerData]){
                         // row = row+1;
                         // pdf2.text(innerData, 10, 20 + (row*10));
 
@@ -44,13 +44,13 @@ const Home = () => {
                         }
                         pdf2.text(jsonData[data][innerData], 10, 10 + (row*2));
                         j=j+1;
+                        row = row+2;
                     }
-                    row = row+2;
                 }
                 row = row+1;
+                row=row+1;
+                i = i+1;
             }
-            row=row+1;
-            i = i+1;
         }
         pdf2.save('converted.pdf');
 
